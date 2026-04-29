@@ -43,7 +43,7 @@
       </div>
     </div>
 
-        <input id="captcha_47518" type="hidden"  disabled="disabled" /><script>
+        <input id="captcha_83077" type="hidden"  disabled="disabled" /><script>
             async function sha256(message, find, i) {
                 const msgBuffer = new TextEncoder().encode(message); 
                 const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
@@ -67,7 +67,7 @@
                             while (i < res.data.range) {
                                 sha256(res.data.puzzle + i, res.data.find, i).then(function(s){
                                     if(typeof s !== "undefined"){
-                                        $('#captcha_47518').val($('#captcha_47518').val() + s + ' ');
+                                        $('#captcha_83077').val($('#captcha_83077').val() + s + ' ');
                                         found++;
                                         if(found == res.data.find.length){
                                             $.ajax({
@@ -75,10 +75,10 @@
                                                 type: 'POST',
                                                 dataType: "json",
                                                 data: {
-                                                    captcha: $('#captcha_47518').val()
+                                                    captcha: $('#captcha_83077').val()
                                                 }
                                             }).always(function(data, textStatus, xhr){
-                                                $('#captcha_47518').val('');
+                                                $('#captcha_83077').val('');
                                                 if(typeof window.captchaCallback !== "undefined"){
                                                     window.captchaCallback();
                                                 }
